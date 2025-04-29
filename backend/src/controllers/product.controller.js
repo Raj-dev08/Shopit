@@ -65,6 +65,9 @@ export const createProduct = async (req, res) => {
     try {
         const {user}=req;
 
+        if(!user.isAdmin){
+            return res.status(401).json({message: "only for admin"})
+        }
         const { name, description, price, category, image , about} = req.body;
 
         if(!user){
