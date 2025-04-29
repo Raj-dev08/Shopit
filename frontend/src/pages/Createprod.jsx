@@ -3,11 +3,10 @@ import { Camera, Mail, Loader2,Pen,CaptionsIcon,DollarSign,List} from "lucide-re
 import toast from "react-hot-toast"
 import { useProductStore } from "../store/useProductStore";
 import { useAuthStore } from "../store/useAuthStore";
-import {Navigate}  from "react-router-dom"
+
 
 const CreateProd = ({mode}) => {
   const { isCreatingProduct,uploadProduct,category,editProduct,setEditProduct,updateProduct,getUserProduct}=useProductStore();
-  const {checkAuth}=useAuthStore();
   const [Product, setProduct] = useState({
     description: "",
     about:"",
@@ -29,14 +28,7 @@ const CreateProd = ({mode}) => {
     }
   },[mode,editProduct])
 
-  useEffect(()=>{
-    checkAuth()
-  },[checkAuth])
 
-  if(!checkAuth.isAdmin)
-    return (
-      <Navigate to="/"/>
-    );
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
