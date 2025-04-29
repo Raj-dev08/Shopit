@@ -43,7 +43,7 @@ function App() {
           <Route path="/profile" element={authUser?<ProfilePage/>:<Navigate to="/login" />} />
           <Route path="/product/:id" element={<ProductView/>} />
           <Route path="/cart" element={authUser?<Cart/>:<Navigate to="/login" />} />
-          <Route path="/edit" element={authUser.isAdmin?<Createprod mode="update"/>:<Navigate to="/"/>} />
+          <Route path="/edit" element={authUser?<Createprod mode="update"/>:<Navigate to="/"/>} />
       </Routes>
     </div>
     
