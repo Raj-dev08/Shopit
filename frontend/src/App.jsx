@@ -39,7 +39,7 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/signup" element={!authUser?<SignUpPage />:<Navigate to="/"/>} />
           <Route path="/login" element={!authUser?<LoginPage/>:<Navigate to="/"/>} />
-          <Route path="/create" element={authUser.isAdmin?<Createprod mode="create"/>:<Navigate to="/profile" />} />
+          <Route path="/create" element={authUser?<Createprod mode="create"/>:<Navigate to="/login" />} />
           <Route path="/profile" element={authUser?<ProfilePage/>:<Navigate to="/login" />} />
           <Route path="/product/:id" element={<ProductView/>} />
           <Route path="/cart" element={authUser?<Cart/>:<Navigate to="/login" />} />
