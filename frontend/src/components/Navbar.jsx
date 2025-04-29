@@ -60,7 +60,7 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2">
 
-              <div className="dropdown dropdown-center">
+            {* <div className="dropdown dropdown-center">
                 <div tabIndex={0} role="button" className="btn m-1">
                   <AArrowDown className="w-5 h-5" />
                 </div>
@@ -104,6 +104,7 @@ const Navbar = () => {
                   })}
                 </ul>
               </div>
+            *}
 
             {authUser? (
               <>
@@ -123,6 +124,52 @@ const Navbar = () => {
                     <Plus className="size-6" />
                     <span className="inline">Upload(Admin)</span>
                   </Link>
+                  </li>
+                  <li>
+                    <div className="dropdown dropdown-center">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  <AArrowDown className="w-5 h-5" />
+                </div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52  p-2 shadow-sm">
+                      {sortOptions.map((sort)=>{
+                        return(
+                          <li key={sort} className='flex flex-row gap-2 items-center' onClick={()=>changeSort(sort)}>
+                            <span className="flex flex-row">
+                              {sort.split(" ")[0]}       
+                           
+                            {sort.split(" ")[1] == "1"?(
+                              <p>
+                                <ArrowDown className="w-5 h-5"/>
+                              </p>
+                            ):(
+                              <p>
+                                <ArrowUp className="w-5 h-5"/>
+                              </p>
+                            )}
+                            </span>
+                          </li>
+                        )
+                      })}
+                </ul>
+                  </li>
+                  <li>
+                    <div className="dropdown dropdown-center">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  <ListFilter className="w-5 h-5" />
+                </div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52  p-2 shadow-sm">
+                      <li key="1" className='flex gap-2 items-center' onClick={()=>changeCategry("")}>
+                        <span className="inline">all</span>
+                      </li>
+                  {category.map((cat)=>{
+                    return(
+                      <li key={cat} className='flex gap-2 items-center' onClick={()=>changeCategry(cat)}>
+                        <span className="inline">{cat}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
                   </li>
                   <li>
                   <button className="flex gap-2 items-center" onClick={logout}>
