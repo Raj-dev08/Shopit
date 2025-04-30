@@ -60,7 +60,32 @@ const Navbar = () => {
 
           <div className="flex items-center gap-2">
 
-            <div className="dropdown dropdown-center">
+            
+
+              
+            
+
+            {authUser? (
+              <>
+              <div className="dropdown dropdown-center">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  <EllipsisVertical className="w-5 h-5" />
+                </div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52  p-2 shadow-sm">
+                  <li>
+                  <Link to={"/profile"} className={`flex gap-2 items-center`}>
+                    <User className="size-6" />
+                    <span className="inline">Profile</span>
+                  </Link>
+                  </li>
+                  <li>
+                  <Link to={"/create"} className={`flex gap-2 items-center`}>
+                    <Plus className="size-6" />
+                    <span className="inline">Upload(Admin)</span>
+                  </Link>
+                  </li>
+                  <li>
+                    <div className="dropdown dropdown-center">
                 <div tabIndex={0} role="button" className="btn m-1">
                   <AArrowDown className="w-5 h-5" />
                 </div>
@@ -86,8 +111,10 @@ const Navbar = () => {
                       })}
                 </ul>
               </div>
-
-              <div className="dropdown dropdown-center">
+                  </li>
+                  
+                  <li>
+                    <div className="dropdown dropdown-center">
                 <div tabIndex={0} role="button" className="btn m-1">
                   <ListFilter className="w-5 h-5" />
                 </div>
@@ -104,27 +131,8 @@ const Navbar = () => {
                   })}
                 </ul>
               </div>
-            
-
-            {authUser? (
-              <>
-              <div className="dropdown dropdown-center">
-                <div tabIndex={0} role="button" className="btn m-1">
-                  <EllipsisVertical className="w-5 h-5" />
-                </div>
-                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52  p-2 shadow-sm">
-                  <li>
-                  <Link to={"/profile"} className={`flex gap-2 items-center`}>
-                    <User className="size-6" />
-                    <span className="inline">Profile</span>
-                  </Link>
                   </li>
-                  <li>
-                  <Link to={"/create"} className={`flex gap-2 items-center`}>
-                    <Plus className="size-6" />
-                    <span className="inline">Upload(Admin)</span>
-                  </Link>
-                  </li>
+      
                   <li>
                   <button className="flex gap-2 items-center" onClick={logout}>
                     <LogOut className="size-6" />
